@@ -1,10 +1,17 @@
 
+
+
 (function(){
 
 const form = document.getElementById("assistantForm");
 if(!form) return;
 
 const WA_NUMBER = "525521114448";
+
+
+
+
+
 
 
 /* ================= ELEMENTOS ================= */
@@ -153,5 +160,9 @@ const isMobile =
 if (!isMobile && nombre && form.offsetParent !== null) {
   nombre.focus();
 }
+
+restaurar();
+validarTodo();
+nombre.focus();
 
 })();
