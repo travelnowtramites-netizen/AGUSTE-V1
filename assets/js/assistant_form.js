@@ -1,45 +1,4 @@
 
-// QUIERO CAMBIARLO PARA QUE TRABAJE DISTINTO 
-// 1Campos existen
-
-// Nombre
-
-// Teléfono
-
-// Correo electrónico
-
-// Tipo de trámite
-
-// Especificar trámite EN CAMPO Detalles (solo si eligió “otros” ES DECIR AL ELEJIS OTRO  EL CAMPO DETALLES SE VOLVERA OBLIGAORIO)
-
-// Ciudad / Consulado
-
-// Detalles adicionales
-
-// 2.Obligatorios SIEMPRE
-
-// Nombre(VALIDAR QUE TENGA NOMBRE TEXTO NO VACIO)
-
-// Correo electrónico(VALIDAR QUE SEA FORMATO CORREO)
-
-// Tipo de trámite
-
-// Ciudad / ubicación
-// 3.Opcional
-
-// Teléfono(VALIDAR QUE TENGA SOLO NUMEROS CON FORMATO DE NUMERO DE TELEFONOS VALIDO)
-
-// Detalles(OPCIONAL SOLO SI EN CAMPO Tipo de trámite
-//  NO ELIJIOO OTROS . PERO SI ELEIJO OTRO ENTONCES SERA OBLIGATORIO)
-
-// 4.COMPORTAMIENTO
-// AL HABRI FORMULARIO POSISONA CURSOSR EN PRIMER CAMPO  Nombre (TEXTO INGRESA NOMBRES ) y al escribir datos correctos
-// colocar esn este campo LO MARCA EN VERDE (TEXTO INGRESA NOMBRES). si se intenta saltar marcas en rojo (TEXTO INGRESA NOMBRES Obligatorio para continuar
-// es decir la validacion de cada campo realizarla al momento de escribir.
-// lo mimo para cada campo.
-// 5. el boton enviar estara siempre desabilitado y se habilita cuando los campos estesn correctos y se desabilita cundo alguno este incorrecto   
-
-
 
 
 (function(){
@@ -188,6 +147,15 @@ Detalles: ${detalle.value||"Ninguno"}`;
 /* ================= INIT ================= */
 restaurar();
 validarTodo();
-nombre.focus();
+
+const isMobile =
+  window.matchMedia("(pointer:coarse)").matches;
+
+// enfocar SOLO en desktop y si el form está visible
+if (!isMobile && nombre && form.offsetParent !== null) {
+  nombre.focus();
+}
+
+
 
 })();
