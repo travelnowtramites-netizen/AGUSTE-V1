@@ -101,16 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     var first = modal.querySelector("input, select, textarea, button, a");
-
-    // ✅ evitar teclado automático en móvil
-  var isMobile = window.matchMedia("(pointer:coarse)").matches;
-
-  if (first && !isMobile) {
-    first.focus();
+    if (first) first.focus();
   }
-}
-
-
 
   function closeModal() {
     if (!modal) return;
