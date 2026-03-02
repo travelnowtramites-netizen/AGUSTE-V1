@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <link rel="stylesheet" href="assets/css/base_styles.css">
+  <link rel="stylesheet" href="assets/css/styles_contacto.css">
   <link rel="stylesheet" href="assets/css/index_styles.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/nav-footer.css">
@@ -144,8 +145,8 @@
           fetchpriority="high" />
 
         <span class="brand-text">
-          <span class="name">Travel Now Visas y Pasaportes</span>
-          <span class="sub">Asesoría remota • México</span>
+          <span class="name">Travel Now</span>
+          <span class="sub">Visas y Pasaportes</span>
         </span>
 
       </a>
@@ -193,7 +194,7 @@
 
           <div class="actions">
             <a class="btn btn-primary is-support" href="#">
-              Contáctanos para más información
+              Asesoría remota • México Contáctanos para más información
             </a>
           </div>
 
@@ -219,7 +220,7 @@
 
     </section> <!-- 🔥 AQUÍ SE CERRABA EL UNIVERSO -->
 
-
+    <p>__________________________________________________________________________________________</p>
 
     <!-- ================= SERVICIOS ================= -->
     <!-- ================= SERVICIOS ================= -->
@@ -260,7 +261,8 @@
       </div>
     </section>
 
-
+    <hr>
+    <p>__________________________________________________________________________________________</p>
     <!-- ================= POR QUÉ ELEGIR ================= -->
     <section class="why">
       <div class="container two-columns">
@@ -549,9 +551,21 @@
 
           </div>
 
+          <!-- <div class="mission">
+          <hr> -->
+
+          <div class="stats">
+            <div><span>Clientes Atendidos</span><strong>500+</strong></div>
+            <div><span>Visas Aprobadas</span><strong>96%</strong></div>
+            <div><span>Países Cubiertos</span><strong>19</strong></div>
+          </div>
+
+
         </div>
+
       </div>
     </section>
+    <hr>
 
     <!-- ================= CTA ================= -->
     <section class="cta" id="contacto">
@@ -573,6 +587,8 @@
 
     </section>
   </main>
+
+  <hr>
   <!-- Footer -->
   <!-- FOOTER -->
   <footer>
@@ -841,108 +857,13 @@
 
 
 
-
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/index_hero.js"></script>
-  <!-- <script src="assets/js/index_card.js" defer></script> -->
-  <!-- <script src="assets/js/chatbot.protected.js" defer></script> -->
-  <!-- <script src="assets/js/assistant_form.js" defer></script> -->
+  <script src="assets/js/assistant_form.js" defer></script>
   <script src="assets/js/support_fab.js" defer></script>
 
 
-
-
-  <!-- <script>
-
-    document.addEventListener("click", function (e) {
-
-      const btn = e.target.closest(".open-ai");
-      if (!btn) return;
-
-      e.preventDefault();
-
-      const launcher = document.getElementById("idappsh-chat-launcher");
-      if (!launcher) return;
-
-      // simula click humano sin romper el listener global del bot
-      setTimeout(() => launcher.click(), 0);
-
-    });
-
-
-    // ===== ABRIR CHAT + MOSTRAR OPCIONES DE INFO =====
-    document.addEventListener("click", async function (e) {
-
-      const btn = e.target.closest(".open-ai-info");
-      if (!btn) return;
-
-      e.preventDefault();
-
-      const launcher = document.getElementById("idappsh-chat-launcher");
-      const panel = document.getElementById("idappsh-chat-panel");
-      const msgList = document.getElementById("idappsh-chat-messages");
-
-      if (!launcher || !panel || !msgList) return;
-
-      // abrir chat sin que se autocierre
-      setTimeout(() => launcher.click(), 0);
-
-      // esperar a que el bot realmente aparezca
-      await new Promise(resolve => {
-        const check = () => {
-          if (
-            panel.classList.contains("open") &&
-            msgList.querySelector(".msg.assistant")
-          ) resolve();
-          else requestAnimationFrame(check);
-        };
-        check();
-      });
-
-      // evitar duplicar mensaje si vuelven a presionar
-      if (panel.dataset.infoInjected === "1") return;
-      panel.dataset.infoInjected = "1";
-
-      // ===== MENSAJE =====
-      const bubble = document.createElement("div");
-      bubble.className = "msg assistant";
-      bubble.textContent = "¿Qué tipo de información te gustaría conocer?";
-      msgList.appendChild(bubble);
-
-      // ===== OPCIONES =====
-      const row = document.createElement("div");
-      row.className = "action-row";
-
-      const opciones = ["Visas", "Costos", "Requisitos", "Tiempos"];
-
-      opciones.forEach(texto => {
-
-        const b = document.createElement("button");
-        b.className = "action-btn";
-        b.type = "button";
-        b.textContent = texto;
-
-        b.onclick = () => {
-          const input = document.getElementById("idappsh-chat-input");
-          const form = document.getElementById("idappsh-chat-form");
-          if (!input || !form) return;
-
-          input.value = texto;
-          form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-          row.remove();
-        };
-
-        row.appendChild(b);
-      });
-
-      msgList.appendChild(row);
-      msgList.scrollTop = msgList.scrollHeight;
-
-    });
-
-  </script> -->
-
-  <!-- <script>
+  <script>
     const header = document.querySelector(".header");
 
     window.addEventListener("scroll", () => {
@@ -962,7 +883,7 @@
       }
 
     });
-  </script> -->
+  </script>
 
   <script>
     document.getElementById("year").textContent =
@@ -973,5 +894,3 @@
 
 
 </html>
-
-
