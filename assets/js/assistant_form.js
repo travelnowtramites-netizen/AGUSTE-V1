@@ -1,6 +1,4 @@
 
-
-
 (function(){
 
 const form = document.getElementById("assistantForm");
@@ -155,7 +153,5 @@ const isMobile =
 if (!isMobile && nombre && form.offsetParent !== null) {
   nombre.focus();
 }
-
-
 
 })();
