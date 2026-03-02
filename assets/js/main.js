@@ -102,22 +102,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.overflow = "hidden";
     var first = modal.querySelector("input, select, textarea, button, a");
 
-    if (first && window.innerWidth > 768) {
-  first.focus();
-  
+    // ✅ evitar teclado automático en móvil
   var isMobile = window.matchMedia("(pointer:coarse)").matches;
 
-if (first && !isMobile) {
-  first.focus();
-}
-
-
-
-
-
-  
-}
+  if (first && !isMobile) {
+    first.focus();
   }
+}
+
+
 
   function closeModal() {
     if (!modal) return;
