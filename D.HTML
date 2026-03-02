@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Testimonios 3D</title>
+
+<style>
+
+/* ===============================
+   LAYOUT DEMO
+=================================*/
+
+body{
+  font-family:Arial;
+  background:#f2f4f8;
+  padding:60px;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+}
+
+.two-columns{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:60px;
+  align-items:center;
+}
+
+/* ===============================
+   TESTIMONIAL
+=================================*/
+
+.testimonial{
+  position:relative;
+}
+
+.review-slider{
+  position:relative;
+  height:240px;
+  perspective:1200px;
+}
+
+/* TARJETA */
+.review{
+  position:absolute;
+  inset:0;
+
+  background:#061e49;
+  color:#fff;
+
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+
+  opacity:0;
+  z-index:0;
+
+  transform:
+    translate3d(120px,0,-150px)
+    rotateY(-25deg)
+    scale(.85);
+
+  filter:blur(6px);
+
+  transition:
+    transform .8s cubic-bezier(.22,.61,.36,1),
+    opacity .6s ease,
+    filter .6s ease;
+}
+
+/* ACTIVA */
+.review.active{
+  opacity:1;
+  z-index:3;
+
+  transform:
+    translate3d(0,0,0)
+    rotateY(0)
+    scale(1);
+
+  filter:blur(0);
+}
+
+/* SALE */
+.review.exit{
+  opacity:0;
+  z-index:2;
+
+  transform:
+    translate3d(-120px,0,-150px)
+    rotateY(25deg)
+    scale(.85);
+
+  filter:blur(8px);
+}
+
+/* ===============================
+   CONTENIDO
+=================================*/
+
+.review-top{
+  display:flex;
+  gap:15px;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.avatar{
+  width:55px;
+  height:55px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#6d5cff,#9333ea);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+.review-info strong{
+  display:block;
+}
+
+.stars{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:4px;
+}
+
+.stars img{
+  height:22px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- ================= POR QUÉ ELEGIR ================= -->
+<section class="why">
+<div class="container two-columns">
+
+<div>
+<h2>¿Por Qué Elegir Travel Now?</h2>
+<p>
+Simplificamos tus trámites de viaje con asesoría experta.
+</p>
+</div>
+
+
+<div class="testimonial">
+
+<div class="review-slider">
+
+<!-- RESEÑA 1 -->
+<div class="review active">
+<div class="review-top">
+<div class="avatar">MR</div>
+
+<div class="review-info">
+<strong>María Rodríguez</strong>
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+</div>
+</div>
+</div>
+
+<p>
+Me ayudaron en todo el proceso de visa.
+Atención clara y rápida.
+</p>
+</div>
+
+
+<!-- RESEÑA 2 -->
+<div class="review">
+<div class="review-top">
+<div class="avatar">CC</div>
+
+<div class="review-info">
+<strong>Carlos Calderón</strong>
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+</div>
+</div>
+</div>
+
+<p>
+Proceso ordenado con seguimiento constante.
+Excelente servicio.
+</p>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+
+<script>
+
+/* ===============================
+   SLIDER 3D REAL
+=================================*/
+
+const reviews=document.querySelectorAll(".review");
+
+let index=0;
+
+setInterval(()=>{
+
+const current=reviews[index];
+
+current.classList.remove("active");
+current.classList.add("exit");
+
+index++;
+if(index>=reviews.length) index=0;
+
+const next=reviews[index];
+
+requestAnimationFrame(()=>{
+next.classList.add("active");
+});
+
+setTimeout(()=>{
+current.classList.remove("exit");
+},800);
+
+},4000);
+
+</script>
+
+</body>
+</html>
