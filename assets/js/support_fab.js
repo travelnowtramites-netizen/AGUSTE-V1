@@ -101,59 +101,66 @@
 
 /* ================= ASSISTANT MODAL CONTROL ================= */
 /* ================= ASSISTANT MODAL CONTROL (FIX REAL) ================= */
+// assistant_modal.js
 (function(){
 
-  const assistantModal = document.getElementById("assistantModal");
-  const assistantOverlay = document.getElementById("assistantOverlay");
-  const closeAssistant = document.getElementById("closeAssistant");
+const assistantModal   = document.getElementById("assistantModal");
+const assistantOverlay = document.getElementById("assistantOverlay");
+const closeAssistant   = document.getElementById("closeAssistant");
 
-  if(!assistantModal || !assistantOverlay) return;
+if(!assistantModal || !assistantOverlay) return;
 
-  function openAssistant(){
-    assistantModal.classList.add("is-open");
-    assistantOverlay.classList.add("is-open");
-    assistantModal.setAttribute("aria-hidden","false");
-  }
+/* ===============================
+   ABRIR MODAL
+================================ */
+function openAssistant(){
 
-  function closeAssistantModal(){
-    assistantModal.classList.remove("is-open");
-    assistantOverlay.classList.remove("is-open");
-    assistantModal.setAttribute("aria-hidden","true");
-  }
+  assistantModal.classList.add("is-open");
+  assistantOverlay.classList.add("is-open");
+  assistantModal.setAttribute("aria-hidden","false");
 
-  /* abrir desde cualquier botón maestro */
-  document.addEventListener("click", function(e){
-    const btn = e.target.closest(".is-assistant");
-    if(!btn) return;
+  // autofocus SOLO cuando usuario abre
+  setTimeout(()=>{
+    const nombre = document.getElementById("a_nombre");
+    if(nombre) nombre.focus();
+  },150);
+}
 
-    e.preventDefault();
-    e.stopPropagation();   // 🔥 evita que cierre el maestro
-    openAssistant();
-  });
+/* ===============================
+   CERRAR MODAL
+================================ */
+function closeAssistantModal(){
 
-  /* click fuera = cerrar SOLO formulario */
-  assistantOverlay.addEventListener("click", function(e){
-    e.stopPropagation();   // 🔥 evita cerrar el maestro
-    closeAssistantModal();
-  });
+  // quitar foco → evita teclado fantasma
+  document.activeElement?.blur();
 
-  /* click dentro del modal NO cierra nada */
-  assistantModal.addEventListener("click", function(e){
-    e.stopPropagation();
-  });
+  assistantModal.classList.remove("is-open");
+  assistantOverlay.classList.remove("is-open");
+  assistantModal.setAttribute("aria-hidden","true");
+}
 
-  if(closeAssistant){
-    closeAssistant.addEventListener("click", function(e){
-      e.stopPropagation();
-      closeAssistantModal();
-    });
-  }
+/* ===============================
+   BOTONES QUE ABREN
+================================ */
+document.addEventListener("click",function(e){
 
-  document.addEventListener("keydown", function(e){
-    if(e.key === "Escape" && assistantModal.classList.contains("is-open")){
-      closeAssistantModal();
-    }
-  });
+  const btn = e.target.closest(".is-assistant");
+  if(!btn) return;
+
+  e.preventDefault();
+  openAssistant();
+});
+
+/* cerrar */
+assistantOverlay.addEventListener("click",closeAssistantModal);
+
+if(closeAssistant){
+  closeAssistant.addEventListener("click",closeAssistantModal);
+}
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape") closeAssistantModal();
+});
 
 })();
 /* abrir panel maestro desde cualquier boton */
